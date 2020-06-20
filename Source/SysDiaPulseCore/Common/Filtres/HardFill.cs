@@ -9,28 +9,34 @@ namespace SysDiaPulseCore.Common.Filtres
     /// </summary>
     public class HardFill: IFilter
     {
-        public HardFill(ColorRGB targetColor, ColorRGB backColor, int radius)
+
+        const int absolute_len = 255 * 255 * 3;
+
+        public HardFill(ColorRGB targetColor, ColorRGB backColor, float prop)
         {
             _target = targetColor;
             _back = backColor;
-            _r = radius;
+            _prop = prop;
         }
 
         public void Apply(ref byte[,,] image)
         {
-            int height = image.GetLength(2);
-            int width = image.GetLength(3);
+            int height = image.GetLength(1);
+            int width = image.GetLength(2);
 
             int x, y, z;
+
+            //int x1, y1, z1;
+            //int x2, y2, z2;
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    x = image[0, i, j] - _target.R;
-                    y = image[1, i, j] - _target.G;
-                    z = image[2, i, j] - _target.B;
+                    x = image[0, i, j] - _back.R;
+                    y = image[1, i, j] - _back.G;
+                    z = image[2, i, j] - _back.B;
 
-                    if (x * x + y * y + z * z < _r)
+                    if ((x * x + y * y + z * z) > _prop * absolute_len)
                     {
                         image[0, i, j] = _target.R;
                         image[1, i, j] = _target.G;
@@ -50,6 +56,6 @@ namespace SysDiaPulseCore.Common.Filtres
 
         private readonly ColorRGB _back;
 
-        private readonly int _r;
+        private readonly float _prop;
     }
 }

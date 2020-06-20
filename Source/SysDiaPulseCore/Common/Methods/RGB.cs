@@ -11,6 +11,13 @@ namespace SysDiaPulseCore.Methods
     {
         public struct ColorRGB
         {
+            public ColorRGB(byte r, byte g, byte b)
+            {
+                R = r;
+                G = g;
+                B = b;
+            }
+
             public byte R;
             public byte G;
             public byte B;
@@ -28,8 +35,10 @@ namespace SysDiaPulseCore.Methods
         /// <returns>Экземпляр Bitmap.</returns>
         public static Bitmap LoadBitmap(string fileName)
         {
-            using FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
-            return new Bitmap(fs);
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+               return new Bitmap(fs);
+            }
         }
 
         /// <summary>

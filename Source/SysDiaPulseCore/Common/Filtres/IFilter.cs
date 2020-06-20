@@ -11,6 +11,6 @@ namespace SysDiaPulseCore.Common.Filtres
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public void Apply(ref byte[,,] image);
+        void Apply(ref byte[,,] image);
     }
 }

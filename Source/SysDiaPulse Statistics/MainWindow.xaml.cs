@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SysDiaPulseCore.Common.Filtres;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using static SysDiaPulseCore.Methods.Rgb;
 
 namespace SysDiaPulse_Statistics
 {
@@ -23,6 +16,25 @@ namespace SysDiaPulse_Statistics
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                var hardFillFilter = new HardFill(new ColorRGB(0, 125, 255), new ColorRGB(255, 255, 255), 0.70f);
+                byte[,,] imageRaw = BitmapToByteRgbQ(LoadBitmap("image.jpg"));
+                hardFillFilter.Apply(ref imageRaw);
+                var bitmapImage = RgbToBitmapQ(imageRaw);
+                MemoryStream ms = new MemoryStream();
+                bitmapImage.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                ms.Seek(0, SeekOrigin.Begin);
+                image.StreamSource = ms;
+                image.EndInit();
+                Image1.Source = image;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
     }
 }
