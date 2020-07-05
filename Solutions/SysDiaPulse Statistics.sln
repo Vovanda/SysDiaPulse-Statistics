@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysDiaPulse Statistics", "..\Source\SysDiaPulse Statistics\SysDiaPulse Statistics.csproj", "{837602E4-D4E2-4166-A0F2-C3CFC8F5367C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysDiaPulseCore", "..\Source\SysDiaPulseCore\SysDiaPulseCore.csproj", "{431BE1ED-457F-4092-A2C5-2814CB5B8EFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SysDiaPulseCore", "..\Source\SysDiaPulseCore\SysDiaPulseCore.csproj", "{431BE1ED-457F-4092-A2C5-2814CB5B8EFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineEyeLite", "..\Source\MachineEyeLite\MachineEyeLite.csproj", "{2A760367-A5C8-47BC-9900-867C6C16B389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineEyeLite", "..\Source\MachineEyeLite\MachineEyeLite.csproj", "{2A760367-A5C8-47BC-9900-867C6C16B389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
